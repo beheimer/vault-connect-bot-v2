@@ -114,15 +114,14 @@ def get_admin_keyboard(lang=None):
         InlineKeyboardButton(t(lang, "ADMIN_BTN_PRICE"), callback_data="admin_set_price")
     )
     kb.add(
-        InlineKeyboardButton(t(lang, "ADMIN_BTN_PROMOS"), callback_data="admin_promos")
-    )
-
-    # Block 3 — Monitoring
-    kb.add(
+        InlineKeyboardButton(t(lang, "ADMIN_BTN_PROMOS"), callback_data="admin_promos"),
         InlineKeyboardButton(t(lang, "ADMIN_BTN_USERS"), callback_data="admin_users")
     )
+
+    # Block 3 — Monitoring + Admin
     kb.add(
-        InlineKeyboardButton(t(lang, "ADMIN_BTN_LIVE_MONITOR"), callback_data="admin_live_monitor")
+        InlineKeyboardButton(t(lang, "ADMIN_BTN_LIVE_MONITOR"), callback_data="admin_live_monitor"),
+        InlineKeyboardButton(t(lang, "ADMIN_BTN_ADMINS"), callback_data="admin_admins")
     )
 
     # Block 4 — Referrals (only if enabled)
@@ -130,11 +129,6 @@ def get_admin_keyboard(lang=None):
         kb.add(
             InlineKeyboardButton(t(lang, "ADMIN_BTN_REFS"), callback_data="admin_refs")
         )
-
-    # Block 5 — Admin management
-    kb.add(
-        InlineKeyboardButton(t(lang, "ADMIN_BTN_ADMINS"), callback_data="admin_admins")
-    )
 
     return kb
 
