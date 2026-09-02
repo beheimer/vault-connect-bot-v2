@@ -179,7 +179,7 @@ TEXTS = {
         "MENU_HINT": "Use the menu below to navigate. 👇",
         # Access modes
         "MODE_FULL": "💠 FULL ACCESS",
-        "MODE_TRIAL": "🧪 FREE 120H",
+        "MODE_TRIAL": "🧪 TRIAL ACCESS",
         "MODE_GUEST": "🕶️ GUEST",
         # Boot animation
         "BOOT_1": "Connecting...",
@@ -565,7 +565,7 @@ TEXTS = {
         "MENU_HINT": "Використай меню нижче для навігації. 👇",
         # Access modes
         "MODE_FULL": "💠 FULL ACCESS",
-        "MODE_TRIAL": "🧪 FREE 120H",
+        "MODE_TRIAL": "🧪 TRIAL ACCESS",
         "MODE_GUEST": "🕶️ GUEST",
         # Boot animation
         "BOOT_1": "Підключення...",
@@ -951,7 +951,7 @@ TEXTS = {
         "MENU_HINT": "Используй меню ниже для навигации. 👇",
         # Access modes
         "MODE_FULL": "💠 FULL ACCESS",
-        "MODE_TRIAL": "🧪 FREE 120H",
+        "MODE_TRIAL": "🧪 TRIAL ACCESS",
         "MODE_GUEST": "🕶️ GUEST",
         # Boot animation
         "BOOT_1": "Подключение...",
