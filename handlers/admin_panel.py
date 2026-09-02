@@ -122,7 +122,6 @@ def get_admin_keyboard(lang=None):
         InlineKeyboardButton(t(lang, "ADMIN_BTN_USERS"), callback_data="admin_users")
     )
     kb.add(
-        InlineKeyboardButton(t(lang, "ADMIN_BTN_STATS"), callback_data="admin_stats"),
         InlineKeyboardButton(t(lang, "ADMIN_BTN_LIVE_MONITOR"), callback_data="admin_live_monitor")
     )
 
