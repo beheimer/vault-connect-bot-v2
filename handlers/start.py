@@ -554,6 +554,10 @@ async def handle_promo_code(message: types.Message):
 
 async def admin_panel_trigger(message: types.Message):
     from handlers.admin_panel import admin_panel
+    try:
+        await message.delete()
+    except Exception:
+        pass
     await admin_panel(message)
 
 
