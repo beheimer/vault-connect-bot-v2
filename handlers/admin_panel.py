@@ -178,7 +178,7 @@ async def admin_callbacks(call: types.CallbackQuery, state: FSMContext):
             name = user.get('full_name') or '—'
             uname = user.get('username')
             identity = f"@{uname}" if uname else f"ID: {uid}"
-            mode_key = get_access_mode(user)
+            mode_key = "MODE_ADMIN" if check_admin(user.get("id", 0)) else get_access_mode(user)
             mode = t(admin_lang, mode_key)
             msg += f"• {name} | {identity} | {mode}\n"
 
@@ -212,7 +212,7 @@ async def admin_callbacks(call: types.CallbackQuery, state: FSMContext):
                 joined = datetime.datetime.fromisoformat(joined_raw).strftime("%d.%m.%Y %H:%M") if joined_raw else "—"
             except Exception:
                 joined = "—"
-            mode_key = get_access_mode(target_user)
+            mode_key = "MODE_ADMIN" if check_admin(target_user.get("id", 0)) else get_access_mode(target_user)
             mode = t(admin_lang, mode_key)
             access_raw = target_user.get('access_until')
             try:
@@ -284,7 +284,7 @@ async def admin_callbacks(call: types.CallbackQuery, state: FSMContext):
         msg = t(admin_lang, "ADMIN_STATUS_LIST") + f"  (Page {page + 1}/{total_pages})\n\n"
         for user in page_users:
             uid = user.get('id')
-            mode_key = get_access_mode(user)
+            mode_key = "MODE_ADMIN" if check_admin(user.get("id", 0)) else get_access_mode(user)
             mode = t(admin_lang, mode_key)
             raw = user.get("access_until")
             try:

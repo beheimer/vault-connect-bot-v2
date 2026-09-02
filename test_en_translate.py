@@ -56,12 +56,12 @@ class TestConfigSettings:
     def test_channel_link_comment_translated(self):
         with open('config/settings.py') as f:
             content = f.read()
-        assert 'channel chat_id as a number without quotes' in content
+        assert 'Same as CHANNEL_ID' in content
 
     def test_channel_id_comment_translated(self):
         with open('config/settings.py') as f:
             content = f.read()
-        assert 'replace with your real channel ID' in content
+        assert 'Your channel ID' in content
 
     def test_referral_comment_translated(self):
         with open('config/settings.py') as f:

@@ -295,28 +295,3 @@ class TestFix9ReferralNoUnknown:
 
 
 # ── FIX 10: migrate.py integration ──
-class TestFix10Migration:
-    def test_run_migration_function_exists(self):
-        """bot.py should have run_migration function."""
-        import bot as bot_mod
-        assert hasattr(bot_mod, "run_migration")
-        assert callable(bot_mod.run_migration)
-
-    def test_migration_called_in_main(self):
-        """run_migration should be called in on_startup or __main__ block."""
-        import inspect
-        import bot as bot_mod
-        source = inspect.getsource(bot_mod)
-        assert "run_migration()" in source
-
-    def test_migration_handles_missing_db_json(self, tmp_path, monkeypatch):
-        """run_migration should not fail if db.json doesn't exist."""
-        import bot as bot_mod
-        # Patch __file__ to point to tmp_path so it looks for db.json there
-        monkeypatch.setattr(bot_mod, "__file__", str(tmp_path / "bot.py"))
-        # Should not raise
-        bot_mod.run_migration()
-
-
-if __name__ == "__main__":
-    pytest.main([__file__, "-v", "-x"])

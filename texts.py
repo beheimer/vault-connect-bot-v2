@@ -178,6 +178,7 @@ TEXTS = {
         "LANG_CHOOSE_FIRST": "🌍 Please choose your language first.",
         "MENU_HINT": "Use the menu below to navigate. 👇",
         # Access modes
+        "MODE_ADMIN": "👑 ADMIN",
         "MODE_FULL": "💠 FULL ACCESS",
         "MODE_TRIAL": "🧪 TRIAL ACCESS",
         "MODE_GUEST": "🕶️ GUEST",
@@ -564,6 +565,7 @@ TEXTS = {
         "LANG_CHOOSE_FIRST": "🌍 Спочатку обери мову.",
         "MENU_HINT": "Використай меню нижче для навігації. 👇",
         # Access modes
+        "MODE_ADMIN": "👑 ADMIN",
         "MODE_FULL": "💠 FULL ACCESS",
         "MODE_TRIAL": "🧪 TRIAL ACCESS",
         "MODE_GUEST": "🕶️ GUEST",
@@ -950,6 +952,7 @@ TEXTS = {
         "LANG_CHOOSE_FIRST": "🌍 Сначала выбери язык.",
         "MENU_HINT": "Используй меню ниже для навигации. 👇",
         # Access modes
+        "MODE_ADMIN": "👑 ADMIN",
         "MODE_FULL": "💠 FULL ACCESS",
         "MODE_TRIAL": "🧪 TRIAL ACCESS",
         "MODE_GUEST": "🕶️ GUEST",
