@@ -53,6 +53,7 @@ class PriceEdit(StatesGroup):
     waiting_for_currency = State()
     waiting_for_type = State()
     waiting_for_price = State()
+    waiting_for_address = State()
 
 
 ITEMS_PER_PAGE = 8
@@ -802,6 +803,38 @@ async def process_new_price(message: types.Message, state: FSMContext):
 
     label = t(admin_lang, "ADMIN_PRICE_LABEL_MONTHLY") if price_type == "monthly" else t(admin_lang, "ADMIN_PRICE_LABEL_FOREVER")
     await message.answer(t(admin_lang, "ADMIN_PRICE_CHANGED", price=price, label=label, currency=currency))
+
+    current_address = get_setting("crypto_address", "")
+    display = f"\n\nCurrent: `{current_address}`" if current_address else ""
+    await message.answer(
+        t(admin_lang, "ADMIN_ADDRESS_PROMPT_FLOW") + display,
+        parse_mode="Markdown"
+    )
+    await PriceEdit.waiting_for_address.set()
+
+
+async def process_new_address(message: types.Message, state: FSMContext):
+    if not check_admin(message.from_user.id):
+        return
+
+    admin_lang = _admin_lang()
+    text = message.text.strip()
+
+    if text == "/skip":
+        await message.answer(t(admin_lang, "ADMIN_ADDRESS_SKIPPED"))
+        await state.finish()
+        await admin_panel(message)
+        return
+
+    if not text.startswith("T") or len(text) != 34:
+        await message.answer(t(admin_lang, "ADMIN_ADDRESS_INVALID"))
+        return
+
+    set_setting("crypto_address", text)
+    await message.answer(
+        t(admin_lang, "ADMIN_ADDRESS_SET", address=text),
+        parse_mode="Markdown"
+    )
     await state.finish()
     await admin_panel(message)
 
@@ -1345,4 +1378,5 @@ def register_handlers(dp: Dispatcher):
     dp.register_message_handler(process_trial_duration, state=TrialEdit.waiting_for_duration, content_types=["text"])
     dp.register_message_handler(process_promo_days, state=PromoCreate.waiting_for_days, content_types=["text"])
     dp.register_message_handler(process_new_price, state=PriceEdit.waiting_for_price, content_types=["text"])
+    dp.register_message_handler(process_new_address, state=PriceEdit.waiting_for_address, content_types=["text"])
     dp.register_callback_query_handler(promo_callbacks, lambda call: call.data.startswith("promo_"), state="*")

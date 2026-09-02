@@ -46,12 +46,12 @@ class TestConfigSettings:
     def test_admin_comment_translated(self):
         with open('config/settings.py') as f:
             content = f.read()
-        assert '# Who has admin rights' in content
+        assert '# Your Telegram username (without @)' in content
 
     def test_payment_comment_translated(self):
         with open('config/settings.py') as f:
             content = f.read()
-        assert '# Who to contact for payment' in content
+        assert '# Token from @BotFather' in content
 
     def test_channel_link_comment_translated(self):
         with open('config/settings.py') as f:

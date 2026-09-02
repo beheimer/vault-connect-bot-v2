@@ -34,6 +34,12 @@ TEXTS = {
             "`TEwnPR7daATh84DLFiTXJGaCge4NbYDbV8`\n"
             "↳ Tap the address to copy!\n\n"
         ),
+        "CRYPTO_INFO_DYNAMIC": (
+            "● Coin: Tether (USDT)\n"
+            "● Network: TRON - TRC20\n\n"
+            "`{address}`\n"
+            "↳ Tap the address to copy!\n\n"
+        ),
         "SHOW_QR": "Show QR code",
         "HIDE_QR": "Hide QR code",
         "PAID_BUTTON": "Paid",
@@ -374,6 +380,13 @@ TEXTS = {
         "PRICE_SUFFIX_FOREVER": "— forever",
         "BTN_CUSTOM_DAYS": "✏️ Custom days",
         "BTN_ADMIN_PANEL": "🛠 Admin Panel",
+        # Crypto address management
+        "ADMIN_BTN_ADDRESS": "💳 Crypto address",
+        "ADMIN_ADDRESS_PROMPT": "Enter the new USDT TRC-20 wallet address:",
+        "ADMIN_ADDRESS_SET": "✅ Address updated: `{address}`",
+        "ADMIN_ADDRESS_INVALID": "❌ Invalid address. Must start with T and be 34 characters.",
+        "ADMIN_ADDRESS_PROMPT_FLOW": "💳 Enter USDT TRC-20 wallet address (or send /skip to keep current):",
+        "ADMIN_ADDRESS_SKIPPED": "⏭ Crypto address unchanged.",
     },
     "uk": {
         # Welcome
@@ -406,6 +419,12 @@ TEXTS = {
             "● Мережа: TRON - TRC20\n\n"
             "`TEwnPR7daATh84DLFiTXJGaCge4NbYDbV8`\n"
             "↳ Натисни на адресу, щоб скопіювати!\n\n"
+        ),
+        "CRYPTO_INFO_DYNAMIC": (
+            "● Монета: Tether (USDT)\n"
+            "● Мережа: TRON - TRC20\n\n"
+            "`{address}`\n"
+            "↳ Натисніть адресу щоб скопіювати!\n\n"
         ),
         "SHOW_QR": "Показати QR-код",
         "HIDE_QR": "Сховати QR-код",
@@ -747,6 +766,13 @@ TEXTS = {
         "PRICE_SUFFIX_FOREVER": "— назавжди",
         "BTN_CUSTOM_DAYS": "✏️ Вказати дні",
         "BTN_ADMIN_PANEL": "🛠 Адмін панель",
+        # Управління крипто адресою
+        "ADMIN_BTN_ADDRESS": "💳 Крипто адреса",
+        "ADMIN_ADDRESS_PROMPT": "Введіть нову адресу USDT TRC-20 гаманця:",
+        "ADMIN_ADDRESS_SET": "✅ Адресу оновлено: `{address}`",
+        "ADMIN_ADDRESS_INVALID": "❌ Невірна адреса. Має починатись з T та містити 34 символи.",
+        "ADMIN_ADDRESS_PROMPT_FLOW": "💳 Введіть адресу USDT TRC-20 гаманця (або надішліть /skip щоб залишити поточну):",
+        "ADMIN_ADDRESS_SKIPPED": "⏭ Крипто адресу не змінено.",
     },
     "ru": {
         # Welcome
@@ -779,6 +805,12 @@ TEXTS = {
             "● Сеть: TRON - TRC20\n\n"
             "`TEwnPR7daATh84DLFiTXJGaCge4NbYDbV8`\n"
             "↳ Нажми на адрес, чтобы скопировать!\n\n"
+        ),
+        "CRYPTO_INFO_DYNAMIC": (
+            "● Монета: Tether (USDT)\n"
+            "● Сеть: TRON - TRC20\n\n"
+            "`{address}`\n"
+            "↳ Нажмите адрес чтобы скопировать!\n\n"
         ),
         "SHOW_QR": "Показать QR-код",
         "HIDE_QR": "Скрыть QR-код",
@@ -1120,6 +1152,13 @@ TEXTS = {
         "PRICE_SUFFIX_FOREVER": "— навсегда",
         "BTN_CUSTOM_DAYS": "✏️ Указать дни",
         "BTN_ADMIN_PANEL": "🛠 Админ панель",
+        # Управление крипто адресом
+        "ADMIN_BTN_ADDRESS": "💳 Крипто адрес",
+        "ADMIN_ADDRESS_PROMPT": "Введите новый адрес USDT TRC-20 кошелька:",
+        "ADMIN_ADDRESS_SET": "✅ Адрес обновлён: `{address}`",
+        "ADMIN_ADDRESS_INVALID": "❌ Неверный адрес. Должен начинаться с T и содержать 34 символа.",
+        "ADMIN_ADDRESS_PROMPT_FLOW": "💳 Введите адрес USDT TRC-20 кошелька (или отправьте /skip чтобы оставить текущий):",
+        "ADMIN_ADDRESS_SKIPPED": "⏭ Крипто адрес не изменён.",
     },
 }
 

@@ -19,8 +19,8 @@ from utils.db import get_user, save_user, update_user_field, get_setting, set_se
 from datetime import datetime
 import asyncio
 import itertools
-
-QR_IMAGE_URL = "https://i.ibb.co/5gMGHD0J/qr-gradient-neon.png"
+import qrcode
+import io
 
 
 class PaymentState(StatesGroup):
@@ -191,8 +191,9 @@ async def pay_manual(message: types.Message):
             InlineKeyboardButton(t(lang, "SHOW_QR"), callback_data="show_qr"),
             InlineKeyboardButton(t(lang, "PAID_BUTTON"), callback_data="paid_confirm")
         )
+        address = get_setting("crypto_address", "—")
         await message.answer(
-            t(lang, "CRYPTO_INFO"),
+            t(lang, "CRYPTO_INFO_DYNAMIC", address=address),
             reply_markup=keyboard,
             parse_mode="Markdown"
         )
@@ -205,14 +206,21 @@ async def show_qr(callback_query: types.CallbackQuery):
     user_id = callback_query.from_user.id
     lang = get_lang(user_id)
 
-    text = t(lang, "CRYPTO_INFO") + f"[👾]({QR_IMAGE_URL})"
+    address = get_setting("crypto_address", "—")
+    crypto_text = t(lang, "CRYPTO_INFO_DYNAMIC", address=address)
+
+    qr = qrcode.make(address)
+    buf = io.BytesIO()
+    qr.save(buf, format='PNG')
+    buf.seek(0)
 
     keyboard = InlineKeyboardMarkup(row_width=1)
     keyboard.add(
         InlineKeyboardButton(t(lang, "HIDE_QR"), callback_data="hide_qr"),
         InlineKeyboardButton(t(lang, "PAID_BUTTON"), callback_data="paid_confirm")
     )
-    await callback_query.message.edit_text(text, reply_markup=keyboard, parse_mode="Markdown")
+    await callback_query.message.delete()
+    await callback_query.message.answer_photo(buf, caption=crypto_text, reply_markup=keyboard, parse_mode="Markdown")
     await callback_query.answer()
 
 
@@ -221,13 +229,16 @@ async def hide_qr(callback_query: types.CallbackQuery):
     user_id = callback_query.from_user.id
     lang = get_lang(user_id)
 
+    address = get_setting("crypto_address", "—")
+
     keyboard = InlineKeyboardMarkup(row_width=1)
     keyboard.add(
         InlineKeyboardButton(t(lang, "SHOW_QR"), callback_data="show_qr"),
         InlineKeyboardButton(t(lang, "PAID_BUTTON"), callback_data="paid_confirm")
     )
-    await callback_query.message.edit_text(
-        t(lang, "CRYPTO_INFO"),
+    await callback_query.message.delete()
+    await callback_query.message.answer(
+        t(lang, "CRYPTO_INFO_DYNAMIC", address=address),
         reply_markup=keyboard,
         parse_mode="Markdown"
     )
