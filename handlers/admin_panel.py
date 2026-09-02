@@ -119,8 +119,7 @@ def get_admin_keyboard(lang=None):
 
     # Block 3 — Monitoring
     kb.add(
-        InlineKeyboardButton(t(lang, "ADMIN_BTN_USERS"), callback_data="admin_users"),
-        InlineKeyboardButton(t(lang, "ADMIN_BTN_STATUS"), callback_data="admin_status")
+        InlineKeyboardButton(t(lang, "ADMIN_BTN_USERS"), callback_data="admin_users")
     )
     kb.add(
         InlineKeyboardButton(t(lang, "ADMIN_BTN_STATS"), callback_data="admin_stats"),
