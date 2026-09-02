@@ -156,10 +156,23 @@ def _safe_dt(s):
 
 
 async def admin_panel(message: types.Message):
+    from utils.db import get_admin_panel_msg_id, set_admin_panel_msg_id
     if not check_admin(message.from_user.id):
         return
-    admin_lang = get_lang(message.from_user.id)
-    await message.answer(t(admin_lang, "ADMIN_PANEL_TITLE"), reply_markup=get_admin_keyboard(admin_lang))
+    admin_id = message.from_user.id
+    admin_lang = get_lang(admin_id)
+
+    old_msg_id = get_admin_panel_msg_id(admin_id)
+    if old_msg_id:
+        try:
+            await message.bot.delete_message(chat_id=admin_id, message_id=old_msg_id)
+        except Exception:
+            pass
+
+    sent = await message.answer(t(admin_lang, "ADMIN_PANEL_TITLE"), reply_markup=get_admin_keyboard(admin_lang))
+
+    set_admin_panel_msg_id(admin_id, sent.message_id)
+    return sent
 
 
 async def admin_callbacks(call: types.CallbackQuery, state: FSMContext):

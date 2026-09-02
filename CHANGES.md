@@ -32,3 +32,31 @@ Added dynamic crypto address management to the Telegram bot. Admins can now conf
 
 ## PriceEdit FSM Flow (Updated)
 1. Currency → 2. Type (monthly/forever) → 3. Price → **4. Crypto Address (or /skip)**
+
+---
+
+# CHANGES — Single Admin Panel Message (2026-09-02)
+
+## Problem
+Every time an admin opened the panel, a new message was sent, cluttering the chat.
+
+## Solution
+Store the panel `message_id` per admin in the DB `settings` table. Before sending a new panel, delete the previous one.
+
+### 1. `utils/db.py`
+- Added `get_admin_panel_msg_id(admin_id)` — reads `panel_msg_{admin_id}` from settings.
+- Added `set_admin_panel_msg_id(admin_id, msg_id)` — writes it.
+
+### 2. `handlers/admin_panel.py`
+- `admin_panel()` now:
+  1. Deletes the previously stored panel message (ignores errors).
+  2. Sends the new panel.
+  3. Stores the new `message_id` via `set_admin_panel_msg_id`.
+  4. Returns the sent `Message` object.
+- The `/admin` command handler and all internal callers (`process_broadcast`, `process_new_address`) automatically use the new logic.
+
+### 3. `handlers/start.py`
+- `admin_panel_trigger()` unchanged — it delegates to `admin_panel()` which now handles everything.
+
+### 4. Tests
+- Added `test_admin_panel_single.py` with 12 tests covering DB helpers, delete/store logic, error handling, and the trigger path.

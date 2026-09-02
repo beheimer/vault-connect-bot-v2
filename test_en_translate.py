@@ -15,7 +15,7 @@ CLEAN_FILES = [
     'utils/admin_check.py',
     'utils/promo.py',
     'utils/referral.py',
-    'migrate.py',
+    
 ]
 
 

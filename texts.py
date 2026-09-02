@@ -365,8 +365,8 @@ TEXTS = {
         # User detail view
         "USER_DETAIL_TITLE": "👤 User Info",
         "USER_JOINED": "📅 Joined: {date}",
-        "USER_STATUS": "🔐 Status: {mode}",
-        "USER_ACCESS_UNTIL": "📆 Access until: {date}",
+        "USER_STATUS": "🔰 Status: {mode}",
+        "USER_ACCESS_UNTIL": "⏳ Expires: {date}",
         "BTN_DM": "✉️ DM",
         "BTN_RESET_TRIAL": "🔄 Reset trial",
         "BTN_KICK": "🚫 Kick",
@@ -752,8 +752,8 @@ TEXTS = {
         # Деталі користувача
         "USER_DETAIL_TITLE": "👤 Інформація про користувача",
         "USER_JOINED": "📅 Приєднався: {date}",
-        "USER_STATUS": "🔐 Статус: {mode}",
-        "USER_ACCESS_UNTIL": "📆 Доступ до: {date}",
+        "USER_STATUS": "🔰 Статус: {mode}",
+        "USER_ACCESS_UNTIL": "⏳ Закінчується: {date}",
         "BTN_DM": "✉️ Написати",
         "BTN_RESET_TRIAL": "🔄 Скинути тріал",
         "BTN_KICK": "🚫 Кікнути",
@@ -1139,8 +1139,8 @@ TEXTS = {
         # Детали пользователя
         "USER_DETAIL_TITLE": "👤 Информация о пользователе",
         "USER_JOINED": "📅 Присоединился: {date}",
-        "USER_STATUS": "🔐 Статус: {mode}",
-        "USER_ACCESS_UNTIL": "📆 Доступ до: {date}",
+        "USER_STATUS": "🔰 Статус: {mode}",
+        "USER_ACCESS_UNTIL": "⏳ Закінчується: {date}",
         "BTN_DM": "✉️ Написать",
         "BTN_RESET_TRIAL": "🔄 Сбросить триал",
         "BTN_KICK": "🚫 Кикнуть",

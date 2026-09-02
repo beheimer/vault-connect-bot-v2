@@ -182,3 +182,13 @@ def is_admin(user_id: int) -> bool:
     row = conn.execute('SELECT user_id FROM admins WHERE user_id=?', (int(user_id),)).fetchone()
     conn.close()
     return row is not None
+
+def get_admin_panel_msg_id(admin_id: int) -> int:
+    val = get_setting(f"panel_msg_{admin_id}", "")
+    try:
+        return int(val)
+    except Exception:
+        return 0
+
+def set_admin_panel_msg_id(admin_id: int, msg_id: int):
+    set_setting(f"panel_msg_{admin_id}", str(msg_id))
